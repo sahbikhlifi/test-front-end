@@ -5,6 +5,8 @@ import Login from "./containers/auth/login";
 import Register from "./containers/auth/register";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import ListProduct from "./containers/product/ListProduct";
+import UpdateProduct from "./containers/product/Update";
 
 function App() {
   return (
@@ -23,6 +25,10 @@ function App() {
           </Route>
           <Dashboard>
             <Route exact path="/dashboard">
+            <ListProduct />
+            </Route>
+            <Route exact path="/dashboard/update/:id">
+              <UpdateProduct />
             </Route>
           </Dashboard>
         </Switch>
