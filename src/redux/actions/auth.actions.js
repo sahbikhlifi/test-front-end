@@ -8,14 +8,12 @@ export const loginUser = data => {
       .post(`${CONFIG.apiHost}users/login`, data)
       .then(response => {
         if (response.data) {
-          console.log({ response });
           dispatch({ type: LOGIN_SUCCESS, payload: response.data });
           localStorage.setItem("user", JSON.stringify({ token: response?.data?.refreshToken, userInfo: response?.data?.user }));
         }
         return response?.data
       })
       .catch(error => {
-        console.log({ error });
         dispatch({ type: LOGIN_FAILURE, payload: error?.response });
         return error?.response
       });
